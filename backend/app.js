@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 require('dotenv').config();
 
 const stuffRoutes = require('./routes/stuff');
@@ -34,5 +35,6 @@ app.use(bodyParser.json());
 
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;
